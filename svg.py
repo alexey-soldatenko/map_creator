@@ -69,7 +69,8 @@ class SVG:
             if line_coords:
                 el = SVGElement(name="polyline")
                 el.coords = [self.coords_to_2d(*bound_coords, *coords) for coords in line_coords]
-                points = " ".join(["{},{}".format(*coords) for coords in el.coords])
+                # reduce unnecessary precision
+                points = " ".join(["{:.4f},{:.4f}".format(*coords) for coords in el.coords])
                 el_classes = xml_map.get_way_classes(way)
                 el.set_attributes({"class": " ".join(el_classes),
                                "points": points,
@@ -82,7 +83,7 @@ class SVG:
         if self.root:
             return self.root.to_str()
 
-    def is_visible_element(self, element, visible_percent=3):
+    def _get_element_stroke_size(self, element):
         points_num = len(element.coords)
         perimeter = 0
         for i in range(points_num):
@@ -90,10 +91,20 @@ class SVG:
                 x1, y1 = element.coords[i]
                 x2, y2 = element.coords[i+1]
                 perimeter += math.sqrt((x2 - x1)**2 + (y1 - y2)**2)
-        percent = (perimeter / self.width) * 100
-        if percent > visible_percent:
-            return True
+        return (perimeter / self.width) * 100
+
+    def _is_visible_on_map(self, el) -> bool:
+        """Return True if at least one point of element is visible on map
+           otherwise return False
+        """
+        for x, y in el.coords:
+            if (0 < x < self.width)  and (0 < y < self.height):
+                return True
         return False
+
+    def is_visible_element(self, element, visible_percent=3):
+        return (self._is_visible_on_map(element) and
+                self._get_element_stroke_size(element) >= visible_percent)
 
     def coords_to_2d(self, x1, y1, x2, y2):
         dx = (y2-y1)*40000*math.cos((x1+x2)*math.pi/360)/360
