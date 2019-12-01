@@ -1,0 +1,113 @@
+.svg {
+    fill: none;
+    stroke-width: 1;
+    background: #f2efe9;
+}
+.text {
+    font-size: 8px;
+    stroke: #484748;
+}
+.marker {
+    fill:#4b96f3;
+    fill-opacity: 0.25;
+    stroke: #4b96f3;
+    stroke-width: 2;
+}
+.building {
+    fill: #eeeeee;
+}
+.highway {
+    fill: none;
+    stroke: white;
+    stroke-width: 1;
+}
+.highway_big {
+    stroke-width: 4;
+}
+.highway_middle {
+    stroke-width: 3;
+}
+.national_way {
+    stroke-width: 4;
+}
+
+/*amenity*/
+.amenity {
+    fill: #ffffe5;
+}
+
+/*office*/
+.office {
+    fill: #4863a0;
+}
+
+/*leisure*/
+.leisure {
+    fill: #cdf7c9;
+}
+
+/*shop*/
+.shop {
+    fill: #ac39ac;
+}
+
+/*landuse*/
+.landuse {
+    fill: #f1f3dd;
+}
+.residential {
+    fill: #dadada;
+}
+.farmland {
+    fill: #eff0d6;
+}
+.industrial {
+    fill: #e6d1e3;
+}
+.meadow {
+    fill: #ceecb2;
+}
+.commercial {
+    fill: #eecfcf;
+}
+.garages {
+    fill: #deddcc;
+}
+.retail {
+    fill: #fecac5;
+}
+.grass {
+    fill: #cfeda5;
+}
+.greenhouse_horticulture {
+    fill: #9dca8a;
+}
+/*natural*/
+.natural {
+    fill: #c9eec9;
+}
+
+.water {
+    fill: #aad3df;
+}
+.heath {
+    fill: #d6d99f;
+}
+.wood {
+    fill: #9dca8a;
+}
+.waterway {
+    stroke: #aad3df;
+    stroke-width: 3;
+}
+/*power lines*/
+.power {
+    stroke: #bdbbb8;
+}
+.substation {
+    stroke: none;
+    fill: #e2cbde;
+}
+.line {
+    stroke-dasharray: 4;
+}

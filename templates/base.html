@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <head>
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/svg.css') }}" />
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}">
+        <script type="text/javascript">
+            var current_zoom = 1;
+            var lat = {{ latitude }};
+            var lon = {{ longitude }};
+            var map_settings = "";
+        </script>
+
+        </head>
+        <div class="map_container">
+            <div id="svg_container" class="svg_container">
+            {{ svg_content | safe }}
+            </div>
+            <div class="map_settings">
+                <div class="size_button" id="increase_zoom">+</div>
+                <div class="size_button" id="decrease_zoom">-</div>
+                <div class="navigation">
+                    <div class="arrow">&uarr;</div>
+                    <div class="arrow" style="float: left;">&larr;</div>
+                    <div class="arrow" style="float: left;">&rarr;</div>
+                    <div class="arrow">&darr;</div>
+                </div>
+            </div>
+        </div>
+        
+        <script type="text/javascript" src="{{ url_for('static', filename='js/base.js') }}"></script>
+    </body>
+</html>
